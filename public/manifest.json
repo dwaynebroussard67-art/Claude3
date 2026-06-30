@@ -1,0 +1,46 @@
+{
+  "name": "Advanced AI System - Frontier Computer Science",
+  "short_name": "AI System",
+  "description": "Advanced AI with Genetic Programming, Constraint Solving, Neuro-Symbolic Reasoning, and Self-Adaptive Systems",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a0b2e",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "education",
+    "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "Chat with Claude",
+      "url": "/?tab=chat",
+      "description": "Start a conversation with Claude AI"
+    },
+    {
+      "name": "Genetic Algorithm",
+      "url": "/?tab=genetic",
+      "description": "Run genetic programming evolution"
+    },
+    {
+      "name": "Constraint Solver",
+      "url": "/?tab=constraint",
+      "description": "Solve constraint satisfaction problems"
+    }
+  ]
+}
