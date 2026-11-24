@@ -224,6 +224,18 @@ The system includes comprehensive tables for:
 - System metrics and adaptive parameters
 - Event streams (Reactive Programming)
 
+## 🧭 Optional: Universal AI Conductor (local developer tool)
+
+`tools/conductor/` contains a standalone Python tool for routing a structured conversation among web AIs and local models. It uses a clipboard bridge for web UIs, can call Ollama / LM Studio / llama.cpp directly, and stores a portable temporal memory graph in SQLite. It is **not** part of the deployed Next.js app and does not change its database, chat API, or environment variables.
+
+```bash
+cd tools/conductor
+./run.sh serve          # then open http://localhost:8000
+python3 scripts/selftest.py
+```
+
+No API keys or Python dependencies are required for the core tool. Keep it bound to loopback; review [the archive review](docs/CONDUCTOR_ARCHIVE_REVIEW.md) for verification results, intended benefits, and operational cautions.
+
 ## 🤝 Contributing
 
 This is a demonstration of frontier computer science concepts integrated into a practical application. Feel free to extend and customize:

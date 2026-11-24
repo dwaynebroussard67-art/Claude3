@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Universal AI Conductor</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">◈</span>
+    <div>
+      <h1>Universal AI Conductor</h1>
+      <p class="sub">1–10 seats · clipboard bridge + local models · memory you own</p>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="topactions">
+    <button class="ghost" id="btnExport">Export memory</button>
+    <button class="ghost" id="btnRewind">Rewind plan</button>
+  </div>
+</header>
+
+<main class="grid">
+  <!-- ------------------------------------------------ seats -->
+  <section class="panel" id="seatPanel">
+    <div class="panelhead">
+      <h2>Seats <span class="pill" id="seatCount">0</span></h2>
+      <button class="mini" id="btnAddSeat">+ seat</button>
+    </div>
+    <div class="hint">Bridge = you paste into the real ChatGPT/Claude/Gemini tab. Local = app calls it directly.</div>
+    <div id="seatList" class="seatList"></div>
+  </section>
+
+  <!-- ------------------------------------------------ desk -->
+  <section class="panel desk">
+    <div class="panelhead">
+      <h2>Turn plan</h2>
+      <span class="pill" id="episodePill">no session</span>
+    </div>
+
+    <div class="planrow">
+      <input id="planInput" placeholder="Speaking order, e.g.  4, 2, 2 against each other, 3, 4, 4 running a relay" />
+      <button class="primary" id="btnStartPlan">Start</button>
+    </div>
+    <div class="planrow2">
+      <input id="titleInput" placeholder="session title (optional)" />
+      <input id="noteInput" placeholder="standing instruction for the seats (optional)" />
+    </div>
+    <div class="chips" id="planPreview"></div>
+    <div class="stepstrip" id="stepStrip"></div>
+
+    <div class="stepcard" id="stepCard">
+      <div class="stephead">
+        <div>
+          <div class="steptitle" id="stepTitle">No active step</div>
+          <div class="stepsub" id="stepSub">Type a speaking order above and hit Start.</div>
+        </div>
+        <div class="stepactions">
+          <button class="primary" id="btnCopyPrompt">Copy prompt</button>
+          <button class="ghost" id="btnRunHere" title="Only works for local/Ollama seats">Run here</button>
+        </div>
+      </div>
+      <textarea id="promptBox" readonly placeholder="The routed prompt appears here."></textarea>
+      <div class="memsused" id="memUsed"></div>
+    </div>
+
+    <div class="capture">
+      <div class="panelhead small">
+        <h3>Capture a reply</h3>
+        <div class="capturetools">
+          <select id="captureSeat"></select>
+          <button class="mini" id="btnPaste">Paste</button>
+        </div>
+      </div>
+      <textarea id="captureBox" placeholder="Paste exactly what the AI said. It gets stored, mined for memory, and routed to the next seat."></textarea>
+      <div class="capturerow">
+        <button class="primary" id="btnCapture">Capture &amp; route next</button>
+        <span class="hint" id="captureHint"></span>
+      </div>
+    </div>
+
+    <div class="transcriptwrap">
+      <div class="panelhead small"><h3>Transcript</h3><span class="pill" id="turnCount">0 turns</span></div>
+      <div id="transcript" class="transcript"></div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ memory -->
+  <section class="panel">
+    <div class="panelhead">
+      <h2>Memory graph</h2>
+      <span class="pill" id="memStats">0</span>
+    </div>
+    <div class="planrow">
+      <input id="memSearch" placeholder="Search memory…" />
+      <button class="mini" id="btnMemSearch">find</button>
+    </div>
+    <div class="addmem">
+      <input id="memAddInput" placeholder="Teach it something permanent…" />
+      <button class="mini" id="btnMemAdd">+</button>
+    </div>
+    <div id="memList" class="memList"></div>
+    <div class="panelhead small"><h3>Entities</h3></div>
+    <div id="entityList" class="entities"></div>
+  </section>
+</main>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

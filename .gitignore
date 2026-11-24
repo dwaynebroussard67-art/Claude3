@@ -3,3 +3,9 @@ node_modules/
 .env
 .env.local
 *.log
+
+# Universal AI Conductor runtime state (source lives in tools/conductor/)
+tools/conductor/data/*.db
+tools/conductor/data/*.db-*
+__pycache__/
+*.py[cod]
