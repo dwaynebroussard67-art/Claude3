@@ -1,0 +1,37 @@
+name: Conductor self-test
+
+on:
+  pull_request:
+    paths:
+      - 'tools/conductor/**'
+      - '.github/workflows/conductor.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'tools/conductor/**'
+      - '.github/workflows/conductor.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    name: Compile and run bundled regression suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile Python sources
+        run: python -m compileall -q tools/conductor
+
+      - name: Run Universal AI Conductor self-test
+        working-directory: tools/conductor
+        run: python scripts/selftest.py
